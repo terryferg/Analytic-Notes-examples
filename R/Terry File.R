@@ -428,13 +428,13 @@ for (i in c(9,15:53,54,55)){
 length (which(is.na(vinvault_dat$VLT_3L_price)==TRUE))
 
 missing_VLT_price=vinvault_dat[which(is.na(vinvault_dat$VLT_3L_price)==TRUE),c(3,4,7,8,11,46)]
-for (i in 1:dim(missing_VLT_price)[1]){
+for (i in 1:dim(missing_VLT_price)[1]){ # why "[1]"? is this the # of rows in the missing price vector?
   #pull matching clusters
   tmp=vinvault_dat[which(vinvault_dat[,7]==missing_VLT_price[i,3]),]
   #pull matching chains 
   tmp2=tmp[which(tmp[,8]==missing_VLT_price[i,4]),]
   #pull matching weeks
-  tmp3=tmp2[which(tmp[,11]==missing_VLT_price[i,5]),]
+  tmp3=tmp2[which(tmp[,11]==missing_VLT_price[i,5]),] # should tmp be tmp2
   #find mean of price and replace in missing
   missing_VLT_price[i,6]=mean(tmp3[,46],na.rm=T)
 }  
@@ -1025,11 +1025,14 @@ qqplot()              # quantile-quantile plot
 ###############################################################################
 ##  Strategy for the PRogramming FUnctions or just programming!  ##############
 ###############################################################################
-# In this article, we'll apply the general concepts from Strategy for the Programming Assignments to flesh out one of many potential solutions to pollutantmean(). We'll walk through the following steps:
+# In this article, we'll apply the general concepts from Strategy for the 
+# Programming Assignments to flesh out one of many potential solutions to 
+# pollutantmean(). We'll walk through the following steps:
 
-Summarize the objective,
-Describe the inputs and outputs,
-Generate a list of working assumptions to guide subsequent design decisions,
-Use information from the preceding steps to develop a design, and
-Develop the function prototype, coding the design steps as comments into the function prototype.
-Finally, we'll end with a set of next steps for the student.
+# Summarize the objective,
+# Describe the inputs and outputs,
+# Generate a list of working assumptions to guide subsequent design decisions,
+# Use information from the preceding steps to develop a design, and
+# Develop the function prototype, coding the design steps as comments into the
+# function prototype.
+# Finally, we'll end with a set of next steps for the student.
